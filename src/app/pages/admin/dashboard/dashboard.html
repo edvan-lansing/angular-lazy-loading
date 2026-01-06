@@ -1,0 +1,52 @@
+<div class="dashboard">
+  <div class="dashboard-header">
+    <h1>📊 Dashboard Administrativo</h1>
+    <p>Bem-vindo, {{ username() }}!</p>
+  </div>
+
+  <div class="alert-success">
+    <strong>✅ Módulo carregado com sucesso!</strong>
+    <p>Este componente foi carregado via <strong>Lazy Loading</strong>.</p>
+    <p>O código só foi baixado após você fazer login!</p>
+  </div>
+
+  <div class="cards-container">
+    <div class="card">
+      <div class="card-icon">👥</div>
+      <h3>Usuários</h3>
+      <p class="card-value">1,234</p>
+      <p class="card-description">Usuários ativos</p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">📈</div>
+      <h3>Vendas</h3>
+      <p class="card-value">R$ 45.678</p>
+      <p class="card-description">Total do mês</p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">📦</div>
+      <h3>Produtos</h3>
+      <p class="card-value">567</p>
+      <p class="card-description">Em estoque</p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">⭐</div>
+      <h3>Avaliações</h3>
+      <p class="card-value">4.8</p>
+      <p class="card-description">Média geral</p>
+    </div>
+  </div>
+
+  <div class="info-section">
+    <h2>🚀 Benefícios do Lazy Loading</h2>
+    <ul>
+      <li><strong>Performance inicial:</strong> A página inicial carrega mais rápido</li>
+      <li><strong>Economia de banda:</strong> Código só é baixado quando necessário</li>
+      <li><strong>Melhor experiência:</strong> Usuário não espera por código que não vai usar</li>
+      <li><strong>Escalabilidade:</strong> Facilita o crescimento da aplicação</li>
+    </ul>
+  </div>
+</div>

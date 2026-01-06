@@ -1,0 +1,27 @@
+<!--
+  TEMPLATE DO COMPONENTE BUTTON
+  ============================
+
+  Este template é reutilizável e responde dinamicamente
+  aos @Input definidos no componente TypeScript.
+-->
+
+<button
+  [class]="buttonClass"
+  [disabled]="disabled || loading"
+  (click)="onClick()"
+  type="button"
+>
+  <!-- Renderiza o ícone se fornecido -->
+  @if (icon) {
+    <span class="btn-icon">{{ icon }}</span>
+  }
+
+  <!-- Renderiza o texto do botão -->
+  <span class="btn-text">{{ label }}</span>
+
+  <!-- Mostra spinner quando está carregando -->
+  @if (loading) {
+    <span class="btn-spinner">⏳</span>
+  }
+</button>

@@ -1,0 +1,128 @@
+/**
+ * ESTILOS DO COMPONENTE BUTTON
+ * ============================
+ *
+ * ViewEncapsulation: Encapsulado
+ * Estes estilos só afetam este componente
+ * Não vazam para outros componentes
+ */
+
+/* Estilos Base */
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+/* ==================== */
+/* TIPOS DE BOTÃO       */
+/* ==================== */
+
+/* Primário - Azul */
+.btn-primary {
+  background-color: #2196F3;
+  color: white;
+}
+
+.btn-primary:hover:not(.btn-disabled):not(.btn-loading) {
+  background-color: #1976D2;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
+}
+
+.btn-primary:active:not(.btn-disabled):not(.btn-loading) {
+  transform: translateY(0);
+}
+
+/* Secundário - Cinza */
+.btn-secondary {
+  background-color: #757575;
+  color: white;
+}
+
+.btn-secondary:hover:not(.btn-disabled):not(.btn-loading) {
+  background-color: #616161;
+}
+
+/* Danger - Vermelho */
+.btn-danger {
+  background-color: #f44336;
+  color: white;
+}
+
+.btn-danger:hover:not(.btn-disabled):not(.btn-loading) {
+  background-color: #d32f2f;
+  box-shadow: 0 4px 12px rgba(244, 67, 54, 0.3);
+}
+
+/* Success - Verde */
+.btn-success {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.btn-success:hover:not(.btn-disabled):not(.btn-loading) {
+  background-color: #388E3C;
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+/* ==================== */
+/* TAMANHOS             */
+/* ==================== */
+
+.btn-small {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+.btn-medium {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+}
+
+.btn-large {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+}
+
+/* ==================== */
+/* ESTADOS              */
+/* ==================== */
+
+/* Desabilitado */
+.btn-disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Carregando */
+.btn-loading {
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.btn-spinner {
+  display: inline-block;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Ícone antes do texto */
+.btn-icon {
+  font-size: 1.2em;
+}

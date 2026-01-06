@@ -1,0 +1,29 @@
+<!--
+  COMPONENTE CARD - Content Projection
+  ====================================
+
+  <ng-content></ng-content>: Marca o local onde o conteúdo do pai será injetado
+  Permite máxima flexibilidade!
+-->
+
+<div [class]="cardClass">
+  <!-- Cabeçalho do card (opcional) -->
+  @if (title || subtitle) {
+    <div class="card-header">
+      @if (title) {
+        <h3 class="card-title">{{ title }}</h3>
+      }
+      @if (subtitle) {
+        <p class="card-subtitle">{{ subtitle }}</p>
+      }
+    </div>
+  }
+
+  <!--
+    ng-content: Renderiza todo o conteúdo injetado pelo pai
+    Isso torna o card extremamente flexível
+  -->
+  <div class="card-body">
+    <ng-content></ng-content>
+  </div>
+</div>

@@ -1,0 +1,142 @@
+<!--
+  PÁGINA USERS-LIST
+  =================
+
+  Demonstra:
+  - Componentes reutilizáveis (Button, Card)
+  - Service REST com Observable
+  - Tratamento de erros
+  - Estados de carregamento
+-->
+
+<div class="users-container">
+  <h1>👥 Lista de Usuários</h1>
+
+  <!-- Seção de Controles -->
+  <div class="controls">
+    <p class="subtitle">
+      Exemplo prático de:
+      <strong>Observable + Service REST + Componentes Reutilizáveis</strong>
+    </p>
+
+    <!-- Usar componente Button reutilizável -->
+    <app-button
+      label="🔄 Recarregar"
+      type="primary"
+      size="medium"
+      [loading]="isLoading()"
+      [disabled]="isLoading()"
+      (buttonClick)="onReload()"
+    ></app-button>
+  </div>
+
+  <!-- Mostrar estado de carregamento -->
+  @if (isLoading()) {
+    <div class="loading-state">
+      <p>⏳ Carregando usuários...</p>
+      <div class="spinner"></div>
+    </div>
+  }
+
+  <!-- Mostrar mensagem de erro -->
+  @if (errorMessage()) {
+    <div class="error-state">
+      <h3>⚠️ Erro</h3>
+      <p>{{ errorMessage() }}</p>
+      <app-button
+        label="Tentar Novamente"
+        type="danger"
+        (buttonClick)="onReload()"
+      ></app-button>
+    </div>
+  }
+
+  <!-- Mostrar lista de usuários -->
+  @if (!isLoading() && !errorMessage()) {
+    <div class="users-grid">
+      @for (user of users(); track user.id) {
+        <!-- Usar componente Card reutilizável -->
+        <app-card
+          [title]="user.name"
+          [subtitle]="user.email"
+          [elevation]="2"
+        >
+          <div class="user-details">
+            <!-- Email -->
+            <div class="detail-row">
+              <strong>📧 Email:</strong>
+              <span>{{ user.email }}</span>
+            </div>
+
+            <!-- Telefone (se houver) -->
+            @if (user.phone) {
+              <div class="detail-row">
+                <strong>📱 Telefone:</strong>
+                <span>{{ user.phone }}</span>
+              </div>
+            }
+
+            <!-- Empresa (se houver) -->
+            @if (user.company) {
+              <div class="detail-row">
+                <strong>🏢 Empresa:</strong>
+                <span>{{ user.company }}</span>
+              </div>
+            }
+
+            <!-- Botões de Ação -->
+            <div class="user-actions">
+              <app-button
+                label="Selecionar"
+                type="primary"
+                size="small"
+                icon="👉"
+                (buttonClick)="onSelectUser(user)"
+              ></app-button>
+
+              <app-button
+                label="Deletar"
+                type="danger"
+                size="small"
+                icon="🗑️"
+                (buttonClick)="onDeleteUser(user)"
+              ></app-button>
+            </div>
+          </div>
+        </app-card>
+      } @empty {
+        <div class="empty-state">
+          <p>Nenhum usuário encontrado</p>
+        </div>
+      }
+    </div>
+  }
+
+  <!-- Mostrar detalhes do usuário selecionado -->
+  @if (selectedUser(); as user) {
+    <div class="selected-user-detail">
+      <app-card
+        [title]="'Detalhes de: ' + user.name"
+        [elevation]="3"
+      >
+        <div class="detail-section">
+          <p><strong>ID:</strong> {{ user.id }}</p>
+          <p><strong>Nome:</strong> {{ user.name }}</p>
+          <p><strong>Email:</strong> {{ user.email }}</p>
+          @if (user.phone) {
+            <p><strong>Telefone:</strong> {{ user.phone }}</p>
+          }
+          @if (user.company) {
+            <p><strong>Empresa:</strong> {{ user.company }}</p>
+          }
+
+          <app-button
+            label="Fechar"
+            type="secondary"
+            (buttonClick)="selectedUser() ? selectedUser.set(null) : null"
+          ></app-button>
+        </div>
+      </app-card>
+    </div>
+  }
+</div>
