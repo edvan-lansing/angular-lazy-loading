@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { provideRouter } from '@angular/router';
 import { PublicHome } from './public-home';
 
 describe('PublicHome', () => {
@@ -8,7 +8,8 @@ describe('PublicHome', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PublicHome]
+      imports: [PublicHome],
+      providers: [provideRouter([])]
     })
     .compileComponents();
 
